@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFSoapServiceAirport.FlightService" CodeBehind="FlightService.svc.cs" %>
