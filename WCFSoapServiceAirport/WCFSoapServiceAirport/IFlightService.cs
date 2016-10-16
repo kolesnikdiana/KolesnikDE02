@@ -12,18 +12,13 @@ namespace WCFSoapServiceAirport
     public interface IFlightService
     {
         [OperationContract]
-        string GetAllFligth();
-
-        /*[OperationContract]
-        Flight Get(string flightNumber);
+        List<Flight> GetAllFligths();
 
         [OperationContract]
-        void Add(Flight f);
+        void AddFlight(Flight f);
 
         [OperationContract]
-        void Edit(Flight f);
+        void DeleteFlight(Flight f);
 
-        [OperationContract]
-        void Delete(string flightNumber);*/
     }
 }

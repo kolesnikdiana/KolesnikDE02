@@ -6,51 +6,53 @@ using System.ServiceModel;
 using Newtonsoft.Json;
 using System.Text;
 using WCFSoapServiceAirport.Model;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace WCFSoapServiceAirport
 {
     public class FlightService : IFlightService
     {
-        /*FlightDbContext db = new FlightDbContext();*/
+        private String path = "E:/BSU/SOAP/WCFSoapServiceAirport/WCFSoapServiceAirport/api/flights.json";
 
-        private List<Flight> FlightData = new List<Flight> {
-            new Flight { FlightNumber = "SU1833", Airline = "Aeroflot", From = "MSQ", To = "FRA", Price = 315 },
-            new Flight { FlightNumber = "RE1441", Airline = "Luftgansa", From = "MSQ", To = "MSK", Price = 110 },
-            new Flight { FlightNumber = "AW1011", Airline = "Aeroflot", From = "MSK", To = "FRA", Price = 225 }
-        };
-
-        public string GetAllFligth()
+        public List<Flight> GetAllFligths()
         {
-            IEnumerable<Flight> flights = FlightData;
+            StreamReader sr = new StreamReader(path);
+            String FlightDataJSON = sr.ReadToEnd();
+            sr.Close();
 
-            return JsonConvert.SerializeObject(flights);
-        }
+            List<Flight> FlightData = new List<Flight>();
+            string pattern = @"\{(.*?)\}";
+            Regex rgx = new Regex(pattern);
 
-        /*public Model.Flight Get(string flightNumber)
-        {
-            return db.Flights.Find(flightNumber);
-        }
-
-        public void Add(Flight f)
-        {
-            db.Flights.Add(f);
-            db.SaveChanges();
-        }
-
-        public void Edit(Flight f)
-        {
-            db.Entry(f).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-        }
-
-        public void Delete(string flightNumber)
-        {
-            Flight fl = db.Flights.Find(flightNumber);
-            if (fl != null)
+            foreach (Match match in rgx.Matches(FlightDataJSON))
             {
-                db.Flights.Remove(fl);
-                db.SaveChanges();
+                FlightData.Add(JsonConvert.DeserializeObject<Flight>(match.Value));
             }
-        }*/
+            return FlightData;
+        }
+    
+        public void AddFlight(Flight f)
+        {
+            Flight[] listFls = GetAllFligths().ToArray();
+            f.FlightId = listFls[listFls.Length-1].FlightId + 1;
+            string newFl = JsonConvert.SerializeObject(f);
+            
+            File.AppendAllText(path, newFl);
+        }
+
+        public void DeleteFlight(Flight f)
+        {
+            string flight = JsonConvert.SerializeObject(f);
+
+            StreamReader sr = new StreamReader(path);
+            String FlightDataJSON = sr.ReadToEnd();
+            sr.Close();
+
+            int index = FlightDataJSON.IndexOf(flight);
+            String newJSON = FlightDataJSON.Remove(index, flight.Length);
+            File.WriteAllText(path, newJSON);
+        }
+
     }
 }
