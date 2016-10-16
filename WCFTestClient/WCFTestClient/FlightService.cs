@@ -139,6 +139,12 @@ public interface IFlightService
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteFlight", ReplyAction="http://tempuri.org/IFlightService/DeleteFlightResponse")]
     void DeleteFlight(WCFSoapServiceAirport.Model.Flight f);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/FindFlights", ReplyAction="http://tempuri.org/IFlightService/FindFlightsResponse")]
+    WCFSoapServiceAirport.Model.Flight[] FindFlights(string airline);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/SortByPrice", ReplyAction="http://tempuri.org/IFlightService/SortByPriceResponse")]
+    WCFSoapServiceAirport.Model.Flight[] SortByPrice();
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -188,5 +194,15 @@ public partial class FlightServiceClient : System.ServiceModel.ClientBase<IFligh
     public void DeleteFlight(WCFSoapServiceAirport.Model.Flight f)
     {
         base.Channel.DeleteFlight(f);
+    }
+    
+    public WCFSoapServiceAirport.Model.Flight[] FindFlights(string airline)
+    {
+        return base.Channel.FindFlights(airline);
+    }
+    
+    public WCFSoapServiceAirport.Model.Flight[] SortByPrice()
+    {
+        return base.Channel.SortByPrice();
     }
 }

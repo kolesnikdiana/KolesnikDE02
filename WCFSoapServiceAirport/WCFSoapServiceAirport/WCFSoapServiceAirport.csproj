@@ -46,8 +46,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -65,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AirlineService.svc" />
     <Content Include="FlightService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -77,10 +82,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirlineService.svc.cs">
+      <DependentUpon>AirlineService.svc</DependentUpon>
+    </Compile>
     <Compile Include="FlightService.svc.cs">
       <DependentUpon>FlightService.svc</DependentUpon>
     </Compile>
+    <Compile Include="IAirlineService.cs" />
     <Compile Include="IFlightService.cs" />
+    <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

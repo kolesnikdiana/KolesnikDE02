@@ -23,7 +23,7 @@ namespace WCFTestClient
 
         private static void Init()
         {
-            Console.WriteLine("\n-------------------------\nPlease, choose an action:\n1 -- Look available flights\n2 -- Add new flight\n3 -- Delete flight\n0 -- Exit\n");
+            Console.WriteLine("\n-------------------------\nPlease, choose an action:\n1 -- Look available flights\n2 -- Add new flight\n3 -- Delete flight\n4 -- Find flights of Airline\n5 -- Sort by price\n0 -- Exit\n");
             int caseSwitch = ReadInt();
 
             switch (caseSwitch)
@@ -41,8 +41,7 @@ namespace WCFTestClient
                         Console.WriteLine("\n-------------------------\nAvailable flights:");
                         foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
                         {
-                            Console.WriteLine(fl.FlightNumber);
-
+                            Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -10}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
                         }
                     }
                     else Console.WriteLine("\n-------------------------\nThere're NO available flights");
@@ -81,6 +80,30 @@ namespace WCFTestClient
 
                     Init();
                     break;
+                case 4:
+                    Console.WriteLine("\n-------------------------\nEnter an airline name:");
+                    String line = Console.ReadLine();
+                    flights = client.FindFlights(line);
+                    if (flights.Length > 0)
+                    {
+                        foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
+                        {
+                            Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
+                        }
+                    }
+                    else Console.WriteLine("There're NO flights of the '" + line + "' airline");
+                    Init();
+                    break;
+                case 5:
+                    flights = client.SortByPrice();
+                    Console.WriteLine("\n-------------------------\nSorted by price:");
+                    foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
+                    {
+                        Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
+                    }
+                    Init();
+                    break;
+
                 default:
                     Console.WriteLine("\n-------------------------\nThere're no such an option");
                     Init();

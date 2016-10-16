@@ -8,9 +8,12 @@ using System.Text;
 using WCFSoapServiceAirport.Model;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.ServiceModel.Activation;
+using System.Collections;
 
 namespace WCFSoapServiceAirport
 {
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class FlightService : IFlightService
     {
         private String path = "E:/BSU/SOAP/WCFSoapServiceAirport/WCFSoapServiceAirport/api/flights.json";
@@ -52,6 +55,36 @@ namespace WCFSoapServiceAirport
             int index = FlightDataJSON.IndexOf(flight);
             String newJSON = FlightDataJSON.Remove(index, flight.Length);
             File.WriteAllText(path, newJSON);
+        }
+
+        public List<Flight> FindFlights( String airline ) 
+        {
+            List<Flight> flights = GetAllFligths();
+            List<Flight> res = new List<Flight>();
+            foreach(Flight f in flights){
+                if (f.Airline == airline)
+                {
+                    res.Add(f);
+                }
+                
+            }
+
+            return res;
+        }
+
+        public Flight[] SortByPrice()
+        {
+            Flight[] arr = GetAllFligths().ToArray();
+            //IComparer prComparer = new PriceCompare()
+
+            Array.Sort(arr, prComparer);
+            
+            return arr;
+        }
+
+        public int prComparer(Flight x, Flight y)
+        {
+            return (new CaseInsensitiveComparer()).Compare(x.Price, y.Price);
         }
 
     }

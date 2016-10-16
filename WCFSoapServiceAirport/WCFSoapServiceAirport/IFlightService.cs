@@ -20,5 +20,10 @@ namespace WCFSoapServiceAirport
         [OperationContract]
         void DeleteFlight(Flight f);
 
+        [OperationContract]
+        List<Flight> FindFlights(String airline);
+
+        [OperationContract]
+        Flight[] SortByPrice();
     }
 }
