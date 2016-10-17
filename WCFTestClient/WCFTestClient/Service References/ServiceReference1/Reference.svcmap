@@ -25,6 +25,7 @@
     <MetadataFile FileName="FlightService.wsdl" MetadataType="Wsdl" ID="f16285c7-af48-4a41-8862-8f0986390000" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?wsdl" />
     <MetadataFile FileName="FlightService.disco" MetadataType="Disco" ID="f3dc3739-aeef-4bb4-a9f1-05ef8cf013c8" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?disco" />
     <MetadataFile FileName="FlightService1.xsd" MetadataType="Schema" ID="d9fe4a8a-2f15-43f2-a594-09ed4e286ea9" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FlightService2.xsd" MetadataType="Schema" ID="9796acb1-9fa1-467b-bf25-b07e038a0ac1" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

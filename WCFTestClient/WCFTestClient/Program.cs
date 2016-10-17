@@ -41,7 +41,7 @@ namespace WCFTestClient
                         Console.WriteLine("\n-------------------------\nAvailable flights:");
                         foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
                         {
-                            Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -10}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
+                            Console.WriteLine("{0, -10} {1, -18} {2, -13} {3, -10} {4, -10}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
                         }
                     }
                     else Console.WriteLine("\n-------------------------\nThere're NO available flights");
@@ -60,7 +60,7 @@ namespace WCFTestClient
                     Console.WriteLine("Enter ticket's price");
                     int price = ReadInt();
 
-                    client.AddFlight(new WCFSoapServiceAirport.Model.Flight() { FlightNumber = flNumber, Airline = airline, From = from, To = to, Price = price });
+                    client.AddFlight(flNumber, airline, from, to, price);
 
                     Init();
                     break;
@@ -88,7 +88,7 @@ namespace WCFTestClient
                     {
                         foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
                         {
-                            Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
+                            Console.WriteLine("{0, -10} {1, -18} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
                         }
                     }
                     else Console.WriteLine("There're NO flights of the '" + line + "' airline");
@@ -99,7 +99,7 @@ namespace WCFTestClient
                     Console.WriteLine("\n-------------------------\nSorted by price:");
                     foreach (WCFSoapServiceAirport.Model.Flight fl in flights)
                     {
-                        Console.WriteLine("{0, -10} {1, -12} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
+                        Console.WriteLine("{0, -10} {1, -18} {2, -13} {3, -10} {4, -5}", "№ " + fl.FlightNumber, fl.Airline, " from: " + fl.From, "to: " + fl.To, " | $ " + fl.Price);
                     }
                     Init();
                     break;

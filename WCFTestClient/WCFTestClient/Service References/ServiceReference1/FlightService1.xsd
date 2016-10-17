@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="GetAllFligth">
+  <xs:import schemaLocation="http://localhost:2016/FlightService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" />
+  <xs:element name="GetAllFligths">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllFligthResponse">
+  <xs:element name="GetAllFligthsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetAllFligthResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" minOccurs="0" name="GetAllFligthsResult" nillable="true" type="q1:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="n" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="a" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="f" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="t" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="p" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFlightResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFlight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" minOccurs="0" name="f" nillable="true" type="q2:Flight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFlightResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFlights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="a" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFlightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" minOccurs="0" name="FindFlightsResult" nillable="true" type="q3:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SortByPrice">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SortByPriceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" minOccurs="0" name="SortByPriceResult" nillable="true" type="q4:ArrayOfFlight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

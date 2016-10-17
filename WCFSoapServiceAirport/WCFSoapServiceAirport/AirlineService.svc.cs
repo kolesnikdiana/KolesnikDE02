@@ -22,32 +22,35 @@ namespace WCFSoapServiceAirport
         public List<Airline> GetAllAirlines()
         {
             StreamReader sr = new StreamReader(path);
-            String FlightDataJSON = sr.ReadToEnd();
+            String AirlinesDataJSON = sr.ReadToEnd();
             sr.Close();
 
             List<Airline> AirlineData = new List<Airline>();
             string pattern = @"\{(.*?)\}";
             Regex rgx = new Regex(pattern);
 
-            foreach (Match match in rgx.Matches(FlightDataJSON))
+            foreach (Match match in rgx.Matches(AirlinesDataJSON))
             {
                 AirlineData.Add(JsonConvert.DeserializeObject<Airline>(match.Value));
             }
             return AirlineData;
         }
 
-        public void AddAirline(Airline f)
+        public void AddAirline(String airlineName)
         {
-            Airline[] listAirl = GetAllAirlines().ToArray();
-            f.AirlineId = listAirl[listAirl.Length - 1].AirlineId + 1;
-            string newAirl = JsonConvert.SerializeObject(f);
+            Airline a = new Airline();
+            a.AirlineName = airlineName;
 
-            File.AppendAllText(path, newAirl);
+            Airline[] listAirl = GetAllAirlines().ToArray();
+            a.AirlineId = listAirl[listAirl.Length - 1].AirlineId + 1;
+            string aJSON = JsonConvert.SerializeObject(a);
+
+            File.AppendAllText(path, aJSON);
         }
 
-        public void DeleteAirline(Airline f)
+        public void DeleteAirline(Airline a)
         {
-            string airline = JsonConvert.SerializeObject(f);
+            string airline = JsonConvert.SerializeObject(a);
 
             StreamReader sr = new StreamReader(path);
             String FlightDataJSON = sr.ReadToEnd();
@@ -55,6 +58,17 @@ namespace WCFSoapServiceAirport
 
             int index = FlightDataJSON.IndexOf(airline);
             String newJSON = FlightDataJSON.Remove(index, airline.Length);
+            File.WriteAllText(path, newJSON);
+        }
+
+        public void EditAirline(Airline a, String newName)
+        {
+            StreamReader sr = new StreamReader(path);
+            String AirlinesDataJSON = sr.ReadToEnd();
+            sr.Close();
+
+            string newJSON = AirlinesDataJSON.Replace(a.AirlineName, newName);
+
             File.WriteAllText(path, newJSON);
         }
     }

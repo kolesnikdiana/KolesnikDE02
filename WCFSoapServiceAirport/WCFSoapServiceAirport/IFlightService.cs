@@ -15,15 +15,16 @@ namespace WCFSoapServiceAirport
         List<Flight> GetAllFligths();
 
         [OperationContract]
-        void AddFlight(Flight f);
+        void AddFlight(String n, String a, String f, String t, int p);
 
         [OperationContract]
         void DeleteFlight(Flight f);
 
         [OperationContract]
-        List<Flight> FindFlights(String airline);
+        List<Flight> FindFlights(String a);
 
         [OperationContract]
         Flight[] SortByPrice();
+
     }
 }

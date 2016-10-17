@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 using WCFSoapServiceAirport.Model;
+using System.ServiceModel.Web;
 
 namespace WCFSoapServiceAirport
 {
@@ -14,9 +15,13 @@ namespace WCFSoapServiceAirport
         List<Airline> GetAllAirlines();
 
         [OperationContract]
-        void AddAirline(Airline f);
+        void AddAirline(String a);
 
         [OperationContract]
-        void DeleteAirline(Airline f);
+        void DeleteAirline(Airline a);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/edit")]
+        void EditAirline(Airline a, String newName);
     }
 }

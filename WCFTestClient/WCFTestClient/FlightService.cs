@@ -135,13 +135,13 @@ public interface IFlightService
     WCFSoapServiceAirport.Model.Flight[] GetAllFligths();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/AddFlight", ReplyAction="http://tempuri.org/IFlightService/AddFlightResponse")]
-    void AddFlight(WCFSoapServiceAirport.Model.Flight f);
+    void AddFlight(string n, string a, string f, string t, int p);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/DeleteFlight", ReplyAction="http://tempuri.org/IFlightService/DeleteFlightResponse")]
     void DeleteFlight(WCFSoapServiceAirport.Model.Flight f);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/FindFlights", ReplyAction="http://tempuri.org/IFlightService/FindFlightsResponse")]
-    WCFSoapServiceAirport.Model.Flight[] FindFlights(string airline);
+    WCFSoapServiceAirport.Model.Flight[] FindFlights(string a);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFlightService/SortByPrice", ReplyAction="http://tempuri.org/IFlightService/SortByPriceResponse")]
     WCFSoapServiceAirport.Model.Flight[] SortByPrice();
@@ -186,9 +186,9 @@ public partial class FlightServiceClient : System.ServiceModel.ClientBase<IFligh
         return base.Channel.GetAllFligths();
     }
     
-    public void AddFlight(WCFSoapServiceAirport.Model.Flight f)
+    public void AddFlight(string n, string a, string f, string t, int p)
     {
-        base.Channel.AddFlight(f);
+        base.Channel.AddFlight(n, a, f, t, p);
     }
     
     public void DeleteFlight(WCFSoapServiceAirport.Model.Flight f)
@@ -196,9 +196,9 @@ public partial class FlightServiceClient : System.ServiceModel.ClientBase<IFligh
         base.Channel.DeleteFlight(f);
     }
     
-    public WCFSoapServiceAirport.Model.Flight[] FindFlights(string airline)
+    public WCFSoapServiceAirport.Model.Flight[] FindFlights(string a)
     {
-        return base.Channel.FindFlights(airline);
+        return base.Channel.FindFlights(a);
     }
     
     public WCFSoapServiceAirport.Model.Flight[] SortByPrice()

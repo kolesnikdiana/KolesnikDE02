@@ -4,24 +4,101 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:2016/FlightService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:2016/FlightService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2016/FlightService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFSoapServiceAirport.Model" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IFlightService_GetAllFligth_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllFligth" />
+  <wsdl:message name="IFlightService_GetAllFligths_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFligths" />
   </wsdl:message>
-  <wsdl:message name="IFlightService_GetAllFligth_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllFligthResponse" />
+  <wsdl:message name="IFlightService_GetAllFligths_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFligthsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_AddFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFlight" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_AddFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteFlight_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFlight" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_DeleteFlight_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFlightResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_FindFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindFlights" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_FindFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_SortByPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:SortByPrice" />
+  </wsdl:message>
+  <wsdl:message name="IFlightService_SortByPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SortByPriceResponse" />
   </wsdl:message>
   <wsdl:portType name="IFlightService">
-    <wsdl:operation name="GetAllFligth">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllFligth" message="tns:IFlightService_GetAllFligth_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllFligthResponse" message="tns:IFlightService_GetAllFligth_OutputMessage" />
+    <wsdl:operation name="GetAllFligths">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/GetAllFligths" message="tns:IFlightService_GetAllFligths_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/GetAllFligthsResponse" message="tns:IFlightService_GetAllFligths_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/AddFlight" message="tns:IFlightService_AddFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/AddFlightResponse" message="tns:IFlightService_AddFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFlight">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/DeleteFlight" message="tns:IFlightService_DeleteFlight_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/DeleteFlightResponse" message="tns:IFlightService_DeleteFlight_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/FindFlights" message="tns:IFlightService_FindFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/FindFlightsResponse" message="tns:IFlightService_FindFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SortByPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightService/SortByPrice" message="tns:IFlightService_SortByPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightService/SortByPriceResponse" message="tns:IFlightService_SortByPrice_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFlightService" type="tns:IFlightService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllFligth">
-      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllFligth" style="document" />
+    <wsdl:operation name="GetAllFligths">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/GetAllFligths" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFlight">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/AddFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFlight">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/DeleteFlight" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindFlights">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/FindFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortByPrice">
+      <soap:operation soapAction="http://tempuri.org/IFlightService/SortByPrice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
