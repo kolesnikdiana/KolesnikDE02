@@ -266,3 +266,18 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
+
+# Java files
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+target/
+test-output/
+
+# Eclipse
+.classpath
+.project
+.settings/

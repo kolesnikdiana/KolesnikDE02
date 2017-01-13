@@ -1,0 +1,78 @@
+https://www.instagram.com/
+
+1. Log in 
+	- name: testEpam
+	- password: testcase
+ - click Log in link
+ - type credentials 
+
+Expected result: catch sight of news feed of testEpam's account
+
+2. Add profile photo
+ - click person-icon in the top right corner of the page
+ - click user's picture
+ - click 'Upload Photo' menu item
+ - choose picture
+
+Expected result: choosen picture is added as user's photo
+
+3. Delete photo
+ - click person-icon at the top right corner of the page
+ - click user's picture
+ - click 'Remove Current Photo' menu item
+
+Expected result: user's photo is deleted
+
+4. Find an account
+ - click into a serch line at the top of the page 
+ - type someone's name (for ex. diana.kolesnik)
+ - click user's profile
+
+Expected result: Target user's page is opened
+
+5. Follow an account
+ - find an account (see point 3)
+ - click Follow button
+
+Expected result: Follow button became green
+
+ - go back to "my page" by click person-icon in the top right corner
+ - press f5 key (reload the page)
+
+Expected result: one more person is added into 'following' counting
+
+6. Unfollow an account
+ - click person-icon at the top right corner
+ - click 'following' line
+ - click Following button in front of account's name
+
+Expected result: Follow button became grey; after page reloading you won't see unfollowed account in the following list
+
+7. Add comment
+ - choose smb's account (see point 3 or choose one account from news feed by click instagram icon at the left top corner if you've smb to follow)
+ - choose any photo
+ - type a comment in the comment line
+ - press enter key 
+
+Expected result: comment added and you can see it at the bottom of the comments list
+
+8. Add like
+ - open a photo with click
+ - click the heart-shaped button in the right bottom corner of the opened form
+ - (or double-click the photo)
+
+Expected result: the heart-shaped button became red and amount of 'like' marks at the top of the form has increased by one
+
+9. Edit profile
+ - click person-icon in the top right corner of the page
+ - click Edit profile button
+ - change field 'Name' to 'Epam Epamich'
+ - click Send button
+ 
+Expected result: catch sight of 'Profile is saved' notification; catch changed name at the profile header
+
+10. Log out
+ - click three-dots-shaped button at the profile page (go there by clicking person-icon)
+ - click Log out link
+
+Expected result: you're log out; catch sight of log in form
