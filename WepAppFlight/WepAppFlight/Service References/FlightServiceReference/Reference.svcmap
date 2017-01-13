@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2114323f-2e1d-453d-b9cc-091282419117" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2016/FlightService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FlightService.xsd" MetadataType="Schema" ID="85f3f60f-aaf5-432c-8de8-a225d3b58ce7" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FlightService.wsdl" MetadataType="Wsdl" ID="e571668a-6114-45f1-a78c-fd24d8916e2f" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?wsdl" />
+    <MetadataFile FileName="FlightService.disco" MetadataType="Disco" ID="38b4ac23-ad09-42bb-8221-6122a1e4f3b9" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?disco" />
+    <MetadataFile FileName="FlightService1.xsd" MetadataType="Schema" ID="d80edf1a-6530-4aca-a236-bd67bcd0cd03" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FlightService2.xsd" MetadataType="Schema" ID="9be4e915-8bf4-4fe1-96f5-0ac6add1d883" SourceId="1" SourceUrl="http://localhost:2016/FlightService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

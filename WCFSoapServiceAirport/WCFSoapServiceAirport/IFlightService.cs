@@ -15,7 +15,7 @@ namespace WCFSoapServiceAirport
         List<Flight> GetAllFligths();
 
         [OperationContract]
-        void AddFlight(String n, String a, String f, String t, int p);
+        void AddFlight(Flight f);
 
         [OperationContract]
         void DeleteFlight(Flight f);

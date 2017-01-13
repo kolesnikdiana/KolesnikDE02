@@ -37,24 +37,24 @@ namespace WCFSoapServiceAirport
             return FlightData;
         }
     
-        public void AddFlight(String flNumber, String flAirline, String flFrom, String flTo, int flPrice)
+        public void AddFlight(Flight f)
         {
-            Flight f = new Flight();
-            f.FlightNumber = flNumber;
-            f.From = flFrom;
-            f.To = flTo;
-            f.Price = flPrice;
+            Flight flight = new Flight();
+            flight.FlightNumber = f.FlightNumber;
+            flight.From = f.From;
+            flight.To = f.To;
+            flight.Price = f.Price;
 
             List<Airline> AirlineData = GetAllAirlines();
 
-            if (AirlineData.Exists(x => x.AirlineName == flAirline))
+            if (AirlineData.Exists(x => x.AirlineName == f.Airline))
             {
-                Airline a = AirlineData.Find(x => x.AirlineName == flAirline);
+                Airline a = AirlineData.Find(x => x.AirlineName == f.Airline);
             }
             else
             {
                 Airline a = new Airline();
-                a.AirlineName = flAirline;
+                a.AirlineName = f.Airline;
 
                 Airline[] listAirl = AirlineData.ToArray();
                 a.AirlineId = listAirl[listAirl.Length - 1].AirlineId + 1;
@@ -63,16 +63,16 @@ namespace WCFSoapServiceAirport
                 File.AppendAllText(pathAir, aJSON);
             }
 
-            f.Airline = flAirline;
+            flight.Airline = f.Airline;
 
             Flight[] listFls = GetAllFligths().ToArray();
             if (listFls.Length == 0)
             {
-                f.FlightId = 0;
+                flight.FlightId = 0;
             }
-            else f.FlightId = listFls[listFls.Length-1].FlightId + 1;
+            else flight.FlightId = listFls[listFls.Length-1].FlightId + 1;
 
-            string newFl = JsonConvert.SerializeObject(f);
+            string newFl = JsonConvert.SerializeObject(flight);
             File.AppendAllText(path, newFl);
         }
 
